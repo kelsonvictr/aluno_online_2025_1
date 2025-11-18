@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/disciplinas")
 public class DisciplinaController {
@@ -20,4 +22,11 @@ public class DisciplinaController {
     public void criarDisciplina(@RequestBody Disciplina disciplina) {
         disciplinaService.criarDisciplina(disciplina);
     }
+
+    @GetMapping("/professor/{professorId}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Disciplina> listarDisciplinasDoProf(@PathVariable Long professorId) {
+        return disciplinaService.listarDisciplinarDoProf(professorId);
+    }
+
 }
